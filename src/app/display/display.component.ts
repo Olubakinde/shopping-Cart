@@ -50,7 +50,7 @@ export class DisplayComponent extends EzComponent {
             this.num = this.num * 0.7;
         }
 
-        this.addComponent(this.prod, "product");
+        // this.addComponent(this.prod, "product");
 
         this.shopp.clickEvent.subscribe(() => {
             if (!this.prodAdded) {
