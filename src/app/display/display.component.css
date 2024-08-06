@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url("/assets/skincare.jpg");
     background-size: cover;
     background-position: center;
@@ -165,4 +165,46 @@
 #Shop {
     margin-top: 1%;
     margin-left: 3%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    #product {
+        margin-left: 10%;
+        width: 350px;
+    }
+
+    #Order,
+    #promo {
+        margin-left: 10%;
+        width: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    #product {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #Order,
+    #promo {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    #container::before {
+        height: 50vh;
+    }
+
+    #product,
+    #Order,
+    #promo {
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+    }
 }
