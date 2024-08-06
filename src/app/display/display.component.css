@@ -18,6 +18,14 @@
     opacity: 0.5;
 }
 
+#payy {
+    background-color: green;
+}
+
+#payy:hover {
+    background-color: rgb(0, 87, 0);
+}
+
 #inputed {
     color: green;
 }
