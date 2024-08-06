@@ -3,6 +3,28 @@
     flex-wrap: wrap;
 }
 
+#container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/skincare.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+#product,
+#Order,
+#promo {
+    position: relative;
+    z-index: 1;
+}
+
 #product {
     margin-top: -37%;
     margin-left: 17%;
