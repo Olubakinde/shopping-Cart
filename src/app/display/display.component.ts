@@ -1,4 +1,11 @@
-import { BindValueToNumber, Click, EzComponent } from "@gsilber/webez";
+import {
+    BindValue,
+    BindValueToNumber,
+    Click,
+    EzComponent,
+    Input,
+    ValueEvent,
+} from "@gsilber/webez";
 import html from "./display.component.html";
 import css from "./display.component.css";
 import { ProductComponent } from "../product/product.component";
@@ -11,6 +18,12 @@ export class DisplayComponent extends EzComponent {
     protected shopp: ShopListComponent = new ShopListComponent();
     protected prod2: Product2Component = new Product2Component();
     protected prod3: Product3Component = new Product3Component();
+
+    @BindValue("unsec")
+    protected unsec: string = "";
+
+    @BindValue("inputed")
+    protected inputed: string = "";
 
     @BindValueToNumber("num1")
     protected num1: number = 0;
@@ -33,6 +46,10 @@ export class DisplayComponent extends EzComponent {
 
     constructor() {
         super(html, css);
+        if (this.inputed === "Successful") {
+            this.num = this.num * 0.7;
+        }
+
         this.addComponent(this.prod, "product");
 
         this.shopp.clickEvent.subscribe(() => {
@@ -133,6 +150,21 @@ export class DisplayComponent extends EzComponent {
                 });
             }
         });
+    }
+
+    @Input("inputval")
+    inputvall(e: ValueEvent) {
+        this.inputed = "";
+        // Ensure that e.value is a string and perform a case-insensitive check
+        if (e.value.trim().toLowerCase() === "tito") {
+            // Apply a 30% discount to num4
+            this.inputed = "Successful";
+            this.unsec = "";
+            this.num4 = this.num4 * 0.7; // 30% discount means keeping 70%
+        } else {
+            this.unsec = "Unseccessful";
+            this.inputed = "";
+        }
     }
 
     private updateNum3(amount: number) {
