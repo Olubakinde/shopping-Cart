@@ -1,5 +1,10 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #product {
-    margin-top: -30%;
+    margin-top: -37%;
     margin-left: 17%;
     width: 400px;
     background: #fff;
@@ -121,5 +126,5 @@
 
 #Shop {
     margin-top: 1%;
-    margin-left: 17%;
+    margin-left: 3%;
 }

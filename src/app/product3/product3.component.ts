@@ -4,21 +4,21 @@ import {
     EventSubject,
     EzComponent,
 } from "@gsilber/webez";
-import html from "./product.component.html";
-import css from "./product.component.css";
+import html from "./product3.component.html";
+import css from "./product3.component.css";
 
-export class ProductComponent extends EzComponent {
+export class Product3Component extends EzComponent {
     removeEvent: EventSubject = new EventSubject();
     plus: EventSubject = new EventSubject();
     dec: EventSubject = new EventSubject();
     total: EventSubject<number> = new EventSubject<number>();
-    protected numstore: number = 13.5;
+    protected numstore: number = 24.5;
 
     @BindValueToNumber("num")
     protected number: number = 1;
 
     @BindValueToNumber("priced")
-    protected price: number = 13.5;
+    protected price: number = 24.5;
 
     constructor() {
         super(html, css);
@@ -33,8 +33,8 @@ export class ProductComponent extends EzComponent {
     @Click("inc")
     increment() {
         this.number++;
-        this.price += 13.5;
-        this.numstore += 13.5;
+        this.price += 24.5;
+        this.numstore += 24.5;
         this.plus.next();
     }
 
@@ -42,8 +42,8 @@ export class ProductComponent extends EzComponent {
     decrement() {
         if (this.number > 1) {
             this.number--;
-            this.price -= 13.5;
-            this.numstore -= 13.5;
+            this.price -= 24.5;
+            this.numstore -= 24.5;
             this.dec.next();
         } else {
             return;
