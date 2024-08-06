@@ -27,67 +27,111 @@ export class DisplayComponent extends EzComponent {
     @BindValueToNumber("count")
     protected num: number = 0;
 
+    private prodAdded: boolean = false;
+    private prod2Added: boolean = false;
+    private prod3Added: boolean = false;
+
     constructor() {
         super(html, css);
+        this.addComponent(this.prod, "product");
+
         this.shopp.clickEvent.subscribe(() => {
-            this.addComponent(this.prod, "product");
-            this.num++;
-            this.num3 += 3;
-            this.updateNum1AndNum2(13.5);
-            this.prod.plus.subscribe(() => {
+            if (!this.prodAdded) {
+                // Ensure prod is only added once
+                this.addComponent(this.prod, "product");
+                this.prodAdded = true;
+                this.num++;
+                this.num3 += 3;
                 this.updateNum1AndNum2(13.5);
-            });
-            this.prod.dec.subscribe(() => {
-                this.updateNum1AndNum2(-13.5);
-            });
+                this.prod.plus.subscribe(() => {
+                    if (this.prodAdded) {
+                        this.updateNum1AndNum2(13.5);
+                    }
+                });
+                this.prod.dec.subscribe(() => {
+                    if (this.prodAdded) {
+                        this.updateNum1AndNum2(-13.5);
+                    }
+                });
+            }
         });
+
         this.prod.removeEvent.subscribe(() => {
-            this.removeComponent(this.prod);
-            this.num--;
-            this.num3 -= 3;
-            this.prod.total.subscribe((id: number) => {
-                this.updateRemove(id);
-            });
+            if (this.prodAdded) {
+                this.removeComponent(this.prod);
+                this.prodAdded = false;
+                this.num--;
+                this.num3 -= 3;
+                this.prod.total.subscribe((id: number) => {
+                    this.updateRemove(id);
+                });
+            }
         });
+
         this.shopp.clickEvent2.subscribe(() => {
-            this.addComponent(this.prod2, "product");
-            this.num++;
-            this.num3 += 1;
-            this.updateNum1AndNum2(19.5);
-            this.prod2.plus.subscribe(() => {
+            if (!this.prod2Added) {
+                // Ensure prod2 is only added once
+                this.addComponent(this.prod2, "product");
+                this.prod2Added = true;
+                this.num++;
+                this.num3 += 1;
                 this.updateNum1AndNum2(19.5);
-            });
-            this.prod2.dec.subscribe(() => {
-                this.updateNum1AndNum2(-19.5);
-            });
+                this.prod2.plus.subscribe(() => {
+                    if (this.prod2Added) {
+                        this.updateNum1AndNum2(19.5);
+                    }
+                });
+                this.prod2.dec.subscribe(() => {
+                    if (this.prod2Added) {
+                        this.updateNum1AndNum2(-19.5);
+                    }
+                });
+            }
         });
+
         this.prod2.removeEvent.subscribe(() => {
-            this.removeComponent(this.prod2);
-            this.num--;
-            this.num3 -= 1;
-            this.prod2.total.subscribe((id: number) => {
-                this.updateRemove(id);
-            });
+            if (this.prod2Added) {
+                this.removeComponent(this.prod2);
+                this.prod2Added = false;
+                this.num--;
+                this.num3 -= 1;
+                this.prod2.total.subscribe((id: number) => {
+                    this.updateRemove(id);
+                });
+            }
         });
+
         this.shopp.clickEvent3.subscribe(() => {
-            this.addComponent(this.prod3, "product");
-            this.num++;
-            this.num3 += 2;
-            this.updateNum1AndNum2(24.5);
-            this.prod3.plus.subscribe(() => {
+            if (!this.prod3Added) {
+                // Ensure prod3 is only added once
+                this.addComponent(this.prod3, "product");
+                this.prod3Added = true;
+                this.num++;
+                this.num3 += 2;
                 this.updateNum1AndNum2(24.5);
-            });
-            this.prod3.dec.subscribe(() => {
-                this.updateNum1AndNum2(-24.5);
-            });
+                this.prod3.plus.subscribe(() => {
+                    if (this.prod3Added) {
+                        this.updateNum1AndNum2(24.5);
+                    }
+                });
+                this.prod3.dec.subscribe(() => {
+                    if (this.prod3Added) {
+                        this.updateNum1AndNum2(-24.5);
+                    }
+                });
+            }
         });
+
         this.prod3.removeEvent.subscribe(() => {
-            this.removeComponent(this.prod3);
-            this.num--;
-            this.num3 -= 2;
-            this.prod3.total.subscribe((id: number) => {
-                this.updateRemove(id);
-            });
+            if (this.prod3Added) {
+                this.removeComponent(this.prod3);
+                this.prod3Added = false;
+                this.num--;
+                this.num3 -= 2;
+                this.prod3.total.subscribe((id: number) => {
+                    this.updateRemove(id);
+                });
+            }
         });
     }
 
