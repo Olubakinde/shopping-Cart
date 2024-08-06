@@ -211,30 +211,3 @@
         width: 90%;
     }
 }
-
-@media (max-width: 768px) {
-    #container {
-        flex-direction: column; /* Stack items vertically */
-    }
-
-    #container::before {
-        width: 100%;
-        height: auto; /* Adjust to fit the content */
-    }
-
-    #product,
-    #Order,
-    #promo {
-        margin: 10px auto;
-        width: 100%; /* Full width for smaller screens */
-    }
-
-    #product {
-        width: 100%;
-    }
-
-    #Order,
-    #promo {
-        width: 100%;
-    }
-}
