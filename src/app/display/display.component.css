@@ -169,29 +169,30 @@
 
 /* Media queries for responsiveness */
 @media (max-width: 1200px) {
-    #product {
-        margin-left: 10%;
-        width: 350px;
+    #container::before {
+        height: 50vh;
     }
 
+    #product,
     #Order,
     #promo {
-        margin-left: 10%;
-        width: 250px;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
     }
 }
 
 @media (max-width: 992px) {
-    #product {
-        margin-left: 0;
-        width: 100%;
+    #container::before {
+        height: 50vh;
     }
 
+    #product,
     #Order,
     #promo {
-        margin-left: 0;
         width: 100%;
-        margin-top: 10px;
+        margin: 0;
+        box-sizing: border-box;
     }
 }
 
